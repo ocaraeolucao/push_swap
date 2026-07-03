@@ -19,7 +19,7 @@ static int	space(char c)
 	return (0);
 }
 
-long	ft_atoi(const char *nptr)
+long	ft_atol(const char *nptr)
 {
 	int	    i;
 	int	    sign;
