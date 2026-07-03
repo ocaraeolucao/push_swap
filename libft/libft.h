@@ -67,6 +67,8 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_printf(const char *format, ...);
 
+long	ft_atol(const char *nptr);
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);

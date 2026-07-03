@@ -74,6 +74,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack;
 	char	**split;
+	long	atol;
 	int		i;
 	int		j;
 
@@ -89,12 +90,15 @@ int	main(int argc, char **argv)
 		{
 			if (!is_number(split[j]))
 				return (printerror(&stack, split));
-			stackadd_back(&stack, stacknew(ft_atoi(split[j])));
+			atol = ft_atol(split[j]);
+			if (atol > 2147483647 || atol < -2147483648 || stackis_duplicated(stack, (int)atol))
+				return (printerror(&stack, split));
+			stackadd_back(&stack, stacknew((int)atol));
 			j++;
 		}
+		free_split(split);
 		i++;
 	}
-	free_split(split);
 	printstack(&stack);
 	return (0);
 }

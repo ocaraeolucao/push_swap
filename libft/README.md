@@ -64,7 +64,7 @@ Custom implementations of standard C library functions, mirroring the behavior d
 * **Character Conversion:** `ft_toupper`, `ft_tolower`
 * **String Manipulation:** `ft_strlen`, `ft_strlcpy`, `ft_strlcat`, `ft_strchr`, `ft_strrchr`, `ft_strncmp`, `ft_strnstr`, `ft_strdup`
 * **Memory Manipulation:** `ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_memmove`, `ft_memchr`, `ft_memcmp`, `ft_calloc`
-* **Type Conversion:** `ft_atoi`
+* **Type Conversion:** `ft_atoi`, `ft_atol`
 * **Multiple Write Function:** `ft_printf`
 
 ### 2. Additional Functions

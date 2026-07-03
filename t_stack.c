@@ -12,11 +12,24 @@
 
 #include "push_swap.h"
 
+int	stackis_duplicated(t_stack *stack, int number)
+{
+	if (!stack)
+		return (0);
+	while (stack)
+	{
+		if (stack->number == number)
+			return (1);
+		stack = stack->next;
+	}
+	return (0);
+}
+
 t_stack	*stacklast(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
-	while (stack->next != NULL)
+	while (stack->next)
 		stack = stack->next;
 	return (stack);
 }
