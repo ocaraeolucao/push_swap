@@ -5,7 +5,13 @@ CC = cc
 NAME = pushswap.a
 
 SRCS =	main.c \
-		t_stack.c
+		printstack.c \
+		push.c \
+		reverse_rotate.c \
+		rotate.c \
+		swap.c \
+		t_stack.c \
+		validate.c
 OBJ = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft

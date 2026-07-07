@@ -12,17 +12,18 @@
 
 #include "push_swap.h"
 
-int	stackis_duplicated(t_stack *stack, int number)
+void	stackclear(t_list **stack)
 {
+	t_list	*next;
+
 	if (!stack)
-		return (0);
-	while (stack)
+		return ;
+	while (*stack)
 	{
-		if (stack->number == number)
-			return (1);
-		stack = stack->next;
+		next = (*stack)->next;
+		free(*stack);
+		*stack = next;
 	}
-	return (0);
 }
 
 t_stack	*stacklast(t_stack *stack)
@@ -32,6 +33,16 @@ t_stack	*stacklast(t_stack *stack)
 	while (stack->next)
 		stack = stack->next;
 	return (stack);
+}
+
+void	stackadd_front(t_stack **stack, t_stack *new)
+{
+	if (!new)
+		return ;
+	new->next = *stack;
+	if (new->next)
+		new->next->prev = new;
+	*stack = new;
 }
 
 void	stackadd_back(t_stack **stack, t_stack *new)
@@ -45,7 +56,7 @@ void	stackadd_back(t_stack **stack, t_stack *new)
 	else
 	{
 		last = stacklast(*stack);
-		new->before = last;
+		new->prev = last;
 		last->next = new;
 	}	
 }
@@ -58,7 +69,7 @@ t_stack	*stacknew(int number)
 	if (!stacknew)
 		return (NULL);
 	stacknew->number = number;
-	stacknew->before = NULL;
+	stacknew->prev = NULL;
 	stacknew->next = NULL;
 	return (stacknew);
 }
