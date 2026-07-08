@@ -6,7 +6,7 @@
 /*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 18:27:06 by luvieira          #+#    #+#             */
-/*   Updated: 2026/06/30 20:35:30 by luvieira         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:44:19 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,26 +19,28 @@
 typedef struct s_stack
 {
 	int				number;
+	int				index;
 	struct s_stack	*prev;
 	struct s_stack	*next;
 }	t_stack;
 
 int		main(int argc, char **argv);
-
 int		is_duplicated(t_stack *stack, int number);
 int		is_number(const char *number);
+int		stacksize(t_stack *stack);
 
-float   compute_disorder(t_stack *stack);
+float	compute_disorder(t_stack *stack);
 
 t_stack	*stacklast(t_stack *stack);
 t_stack	*stacknew(int number);
 
 void	stackadd_front(t_stack **stack, t_stack *new);
 void	stackadd_back(t_stack **stack, t_stack *new);
-void	stackclear(t_stack **stack);
-
 
 void	printstack(t_stack **stack_a, t_stack **stack_b);
+void	set_index(t_stack **stack);
+void	selection_sort(t_stack **stack_a, t_stack **stack_b);
+void	chunking_sort(t_stack **stack_a, t_stack **stack_b);
 void	sort_2(t_stack **stack);
 void	sort_3(t_stack **stack);
 
@@ -47,7 +49,7 @@ void    push_b(t_stack **stack_a, t_stack **stack_b);
 void    reverse_rotate_a(t_stack **stack_a);
 void    reverse_rotate_b(t_stack **stack_b);
 void    reverse_rotate_r(t_stack **stack_a, t_stack **stack_b);
-void    rotate_a(t_stack **stack_a);
+void	rotate_a(t_stack **stack_a);
 void    rotate_b(t_stack **stack_b);
 void    rotate_r(t_stack **stack_a, t_stack **stack_b);
 void    swap_a(t_stack **stack_a);

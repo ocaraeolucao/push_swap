@@ -6,24 +6,23 @@
 /*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/30 18:53:26 by luvieira          #+#    #+#             */
-/*   Updated: 2026/06/30 20:35:22 by luvieira         ###   ########.fr       */
+/*   Updated: 2026/07/08 19:59:41 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	stackclear(t_stack **stack)
+int	stacksize(t_stack *stack)
 {
-	t_stack	*next;
+	int	i;
 
-	if (!stack)
-		return ;
-	while (*stack)
+	i = 0;
+	while (stack != NULL)
 	{
-		next = (*stack)->next;
-		free(*stack);
-		*stack = next;
+		stack = stack->next;
+		i++;
 	}
+	return (i);
 }
 
 t_stack	*stacklast(t_stack *stack)
@@ -71,5 +70,6 @@ t_stack	*stacknew(int number)
 	stacknew->number = number;
 	stacknew->prev = NULL;
 	stacknew->next = NULL;
+	stacknew->index = -1;
 	return (stacknew);
 }

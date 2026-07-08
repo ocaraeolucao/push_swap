@@ -4,11 +4,13 @@ CC = cc
 
 NAME = pushswap.a
 
-SRCS =	main.c \
+SRCS =	chunking_sort.c \
+		main.c \
 		printstack.c \
 		push.c \
 		reverse_rotate.c \
 		rotate.c \
+		selection_sort.c \
 		swap.c \
 		t_stack.c \
 		validate.c

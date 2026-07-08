@@ -6,23 +6,24 @@
 /*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:21:53 by luvieira          #+#    #+#             */
-/*   Updated: 2026/06/30 20:46:31 by luvieira         ###   ########.fr       */
+/*   Updated: 2026/07/08 20:45:07 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	stacksize(t_stack *stack)
+static void	stackclear(t_stack **stack)
 {
-	int	i;
+	t_stack	*next;
 
-	i = 0;
-	while (stack != NULL)
+	if (!stack)
+		return ;
+	while (*stack)
 	{
-		stack = stack->next;
-		i++;
+		next = (*stack)->next;
+		free(*stack);
+		*stack = next;
 	}
-	return (i);
 }
 
 static void	free_split(char **split)
@@ -85,22 +86,23 @@ static t_stack	*set_stack(char **argv)
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
-	t_stack *stack_b;
+	t_stack	*stack_b;
 	float	disorder;
 
 	if (argc < 2)
 		return (0);
 	stack_a = set_stack(argv);
 	stack_b = NULL;
+	set_index(&stack_a);
 	disorder = compute_disorder(stack_a);
 	if (disorder > 0.0)
     {
         if (disorder < 0.2)
-            sort_2(&stack_a);
+            selection_sort(&stack_a, &stack_b);
 		else if (disorder >= 0.5)
             sort_3(&stack_a);
 		else
-
+			chunking_sort(&stack_a, &stack_b);
         printstack(&stack_a, &stack_b);
     }
     stackclear(&stack_a);

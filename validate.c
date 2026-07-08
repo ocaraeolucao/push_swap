@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 02:48:57 by marvin            #+#    #+#             */
-/*   Updated: 2026/07/07 02:48:57 by marvin           ###   ########.fr       */
+/*   Updated: 2026/07/08 20:43:20 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ int	is_number(const char *number)
 	return (1);
 }
 
-float   compute_disorder(t_stack *stack)
+float	compute_disorder(t_stack *stack)
 {
-    t_stack *current_node;
-    t_stack *compare_node;
+    t_stack	*current_node;
+    t_stack	*compare_node;
     float   mistakes;
     float   total_pairs;
 
@@ -69,4 +69,32 @@ float   compute_disorder(t_stack *stack)
         current_node = current_node->next;
     }
     return (mistakes / total_pairs);
+}
+
+void	set_index(t_stack **stack)
+{
+	t_stack	*current_node;
+	t_stack	*min_node;
+	int		size;
+	int		current_index;
+
+	current_index = 0;
+	size = stacksize(*stack);
+	while (current_index < size)
+	{
+		current_node = *stack;
+		min_node = NULL;
+		while (current_node != NULL)
+		{
+			if (current_node->index == -1)
+			{
+				if (min_node == NULL || current_node->number < min_node->number)
+					min_node = current_node;
+			}
+			current_node = current_node->next;
+		}
+		if (min_node != NULL)
+			min_node->index = current_index;
+		current_index++;
+	}
 }
