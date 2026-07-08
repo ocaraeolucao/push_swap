@@ -14,7 +14,6 @@
 
 void	printstack(t_stack **stack_a, t_stack **stack_b)
 {
-	swap_a(stack_a);    
 	while (*stack_a || *stack_b)
 	{
 		if (*stack_a)
@@ -28,4 +27,26 @@ void	printstack(t_stack **stack_a, t_stack **stack_b)
 		if (*stack_b)
 			*stack_b = (*stack_b)->next;
 	}
+}
+
+void	sort_2(t_stack **stack)
+{
+	if ((*stack)->number > (*stack)->next->number)
+		swap_a(stack);
+}
+
+void	sort_3(t_stack **stack)
+{
+	t_stack	*first_node;
+	t_stack	*second_node;
+	t_stack *third_node;
+
+	first_node = *stack;
+	second_node = first_node->next;
+	third_node = second_node->next;
+	if (first_node->number < second_node->number)
+		reverse_rotate_a(stack);
+	else if (first_node->number > third_node->number)
+		rotate_a(stack);
+	sort_2(stack);
 }

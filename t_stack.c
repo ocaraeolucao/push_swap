@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	stackclear(t_list **stack)
+void	stackclear(t_stack **stack)
 {
-	t_list	*next;
+	t_stack	*next;
 
 	if (!stack)
 		return ;

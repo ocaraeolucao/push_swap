@@ -86,19 +86,22 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack *stack_b;
+	float	disorder;
 
 	if (argc < 2)
 		return (0);
 	stack_a = set_stack(argv);
 	stack_b = NULL;
-	if (!is_sorted(stack_a))
+	disorder = compute_disorder(stack_a);
+	if (disorder > 0.0)
     {
-        if (stacksize(stack_a) == 2)
+        if (disorder < 0.2)
             sort_2(&stack_a);
-        else if (stacksize(stack_a) == 3)
+		else if (disorder >= 0.5)
             sort_3(&stack_a);
-        else
-            printstack(&stack_a, &stack_b);
+		else
+
+        printstack(&stack_a, &stack_b);
     }
     stackclear(&stack_a);
     return (0);

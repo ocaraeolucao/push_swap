@@ -30,19 +30,19 @@ static void    void_reverse_rotate(t_stack **stack)
 
 void    reverse_rotate_a(t_stack **stack_a)
 {
-    void_rotate(stack_a);
+    void_reverse_rotate(stack_a);
     ft_putstr_fd("rra\n", 1);
 }
 
 void    reverse_rotate_b(t_stack **stack_b)
 {
-    void_rotate(stack_b);
+    void_reverse_rotate(stack_b);
     ft_putstr_fd("rrb\n", 1);
 }
 
 void    reverse_rotate_r(t_stack **stack_a, t_stack **stack_b)
 {
-    void_rotate(stack_a);
-    void_rotate(stack_b);
+    void_reverse_rotate(stack_a);
+    void_reverse_rotate(stack_b);
     ft_putstr_fd("rrr\n", 1);
 }

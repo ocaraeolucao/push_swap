@@ -43,15 +43,30 @@ int	is_number(const char *number)
 	return (1);
 }
 
-int is_sorted(t_stack *stack)
+float   compute_disorder(t_stack *stack)
 {
-    if (!stack)
-		return (1);
-    while (stack->next != NULL)
-	{
-		if (stack->number > stack->next->number)
-			return (0);
-		stack = stack->next;
-	}
-	return (1);
+    t_stack *current_node;
+    t_stack *compare_node;
+    float   mistakes;
+    float   total_pairs;
+
+    if (!stack || !stack->next)
+        return (0.0);
+    mistakes = 0.0;
+    total_pairs = 0.0;
+    current_node = stack;
+    while (current_node != NULL)
+    {
+        compare_node = current_node->next;
+        while (compare_node != NULL)
+        {
+            total_pairs += 1.0;
+            if (current_node->number > compare_node->number)
+                mistakes += 1.0;
+                
+            compare_node = compare_node->next;
+        }
+        current_node = current_node->next;
+    }
+    return (mistakes / total_pairs);
 }
