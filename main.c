@@ -41,16 +41,9 @@ static void	free_split(char **split)
 
 static t_stack	*printerror(t_stack **stack, char **split)
 {
-	t_stack	*next;
-
 	ft_putstr_fd("Error\n", 2);
 	free_split(split);
-	while (*stack)
-	{
-		next = stack[0]->next;
-		free(stack[0]);
-		stack[0] = next;
-	}
+	stackclear(stack);
 	return (NULL);
 }
 
@@ -85,26 +78,20 @@ static t_stack	*set_stack(char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_stack	*stack_a;
-	t_stack	*stack_b;
-	float	disorder;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+	t_strategy	strategy;
+	t_bench     bench;
 
-	if (argc < 2)
+	ft_bzero(&bench, sizeof(t_bench));
+	strategy = ADAPTIVE;
+	if (!set_options(&bench, &strategy, &argc, &argv) || argc < 2)
 		return (0);
 	stack_a = set_stack(argv);
 	stack_b = NULL;
-	set_index(&stack_a);
-	disorder = compute_disorder(stack_a);
-	if (disorder > 0.0)
-    {
-        if (disorder < 0.2)
-            selection_sort(&stack_a, &stack_b);
-		else if (disorder >= 0.5)
-            sort_3(&stack_a);
-		else
-			chunking_sort(&stack_a, &stack_b);
-        printstack(&stack_a, &stack_b);
-    }
+	strategy = ADAPTIVE;
+	master_sort(&stack_a, &stack_b, strategy, &bench);
+	printstack(&stack_a, &stack_b);
     stackclear(&stack_a);
     return (0);
 }

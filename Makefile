@@ -2,12 +2,15 @@
 CFLAGS = -Wall -Werror -Wextra
 CC = cc
 
-NAME = pushswap.a
+NAME = push_swap
 
 SRCS =	chunking_sort.c \
 		main.c \
+		master_sort.c \
+		options.c \
 		printstack.c \
 		push.c \
+		radix_sort.c \
 		reverse_rotate.c \
 		rotate.c \
 		selection_sort.c \
@@ -18,13 +21,15 @@ OBJ = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+INCLUDES = -I . -I $(LIBFT_DIR)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(LIBFT):
 	make -C $(LIBFT_DIR)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJ)
+
+$(NAME): $(OBJ) $(LIBFT)
+	$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) -L$(LIBFT_DIR) -lft -o $(NAME)
 
 clean:
 	make clean -C $(LIBFT_DIR)

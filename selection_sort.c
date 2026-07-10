@@ -21,7 +21,7 @@ static t_stack	*get_min_node(t_stack *stack)
 	min_node = stack;
 	while (stack->next != NULL)
 	{
-		if (stack->next->number < min_node->number)
+		if (stack->next->index < min_node->index)
 			min_node = stack->next;
 		stack = stack->next;
 	}
@@ -45,7 +45,7 @@ static int	get_node_position(t_stack *stack, t_stack *min_node)
 	return (i);
 }
 
-void	selection_sort(t_stack **stack_a, t_stack **stack_b)
+void	selection_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	t_stack	*min_node;
 	int		node_position;
@@ -59,17 +59,14 @@ void	selection_sort(t_stack **stack_a, t_stack **stack_b)
 		while (*stack_a != min_node)
 		{
 			if (node_position <= size / 2)
-				rotate_a(stack_a);
+				rotate_a(stack_a, bench);
 			else
-				reverse_rotate_a(stack_a);
+				reverse_rotate_a(stack_a, bench);
 		}
-		push_b(stack_a, stack_b);
+		push_b(stack_a, stack_b, bench);
 		size--;
 	}
-	if (size == 3)
-		sort_3(stack_a);
-	else if (size == 2)
-		sort_2(stack_a);
+	sort_3(stack_a, bench);
 	while (*stack_b != NULL)
-		push_a(stack_a, stack_b);
+		push_a(stack_a, stack_b, bench);
 }

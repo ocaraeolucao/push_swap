@@ -66,6 +66,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 int		ft_printf(const char *format, ...);
+int		ft_sqrt(int n);
 
 long	ft_atol(const char *nptr);
 

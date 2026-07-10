@@ -66,6 +66,7 @@ Custom implementations of standard C library functions, mirroring the behavior d
 * **Memory Manipulation:** `ft_memset`, `ft_bzero`, `ft_memcpy`, `ft_memmove`, `ft_memchr`, `ft_memcmp`, `ft_calloc`
 * **Type Conversion:** `ft_atoi`, `ft_atol`
 * **Multiple Write Function:** `ft_printf`
+* **Math Operation:** `ft_sqrt`
 
 ### 2. Additional Functions
 A set of utility functions that are not included in the standard libc but are highly useful for string manipulation and file descriptor operations.

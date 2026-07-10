@@ -26,14 +26,24 @@ static void    void_push(t_stack **first_stack, t_stack **second_stack)
     stackadd_front(first_stack, node);
 }
 
-void    push_a(t_stack **stack_a, t_stack **stack_b)
+void    push_a(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
     void_push(stack_a, stack_b);
     ft_putstr_fd("pa\n", 1);
+    if (bench && bench->active)
+    {
+        bench->pa++;
+        bench->total_ops++;
+    }
 }
 
-void    push_b(t_stack **stack_a, t_stack **stack_b)
+void    push_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
     void_push(stack_b, stack_a);
     ft_putstr_fd("pb\n", 1);
+    if (bench && bench->active)
+    {
+        bench->pb++;
+        bench->total_ops++;
+    }
 }

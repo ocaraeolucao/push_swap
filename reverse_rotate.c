@@ -28,21 +28,36 @@ static void    void_reverse_rotate(t_stack **stack)
     first_stack->prev = *stack;
 }
 
-void    reverse_rotate_a(t_stack **stack_a)
+void    reverse_rotate_a(t_stack **stack_a, t_bench *bench)
 {
     void_reverse_rotate(stack_a);
     ft_putstr_fd("rra\n", 1);
+    if (bench && bench->active)
+    {
+        bench->rra++;
+        bench->total_ops++;
+    }
 }
 
-void    reverse_rotate_b(t_stack **stack_b)
+void    reverse_rotate_b(t_stack **stack_b, t_bench *bench)
 {
     void_reverse_rotate(stack_b);
     ft_putstr_fd("rrb\n", 1);
+    if (bench && bench->active)
+    {
+        bench->rrb++;
+        bench->total_ops++;
+    }
 }
 
-void    reverse_rotate_r(t_stack **stack_a, t_stack **stack_b)
+void    reverse_rotate_r(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
     void_reverse_rotate(stack_a);
     void_reverse_rotate(stack_b);
     ft_putstr_fd("rrr\n", 1);
+    if (bench && bench->active)
+    {
+        bench->rrr++;
+        bench->total_ops += 2;
+    }
 }
