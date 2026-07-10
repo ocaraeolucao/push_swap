@@ -87,8 +87,6 @@ int	main(int argc, char **argv)
 	strategy = ADAPTIVE;
 	if (!set_options(&bench, &strategy, &argc, &argv) || argc < 2)
 		return (0);
-	bench.strategy_name = set_strategy_name(strategy);
-	bench.complexity = set_complexity(strategy);
 	stack_a = set_stack(argv);
 	stack_b = NULL;
 	master_sort(&stack_a, &stack_b, strategy, &bench);

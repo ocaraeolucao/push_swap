@@ -50,10 +50,6 @@ int		is_number(const char *number);
 int		stacksize(t_stack *stack);
 int		set_options(t_bench *bench, t_strategy *strategy, int *argc, char ***argv);
 
-char    *set_strategy_name(t_strategy strategy);
-char    *set_complexity(t_strategy strategy);
-
-
 t_stack	*stacklast(t_stack *stack);
 t_stack	*stacknew(int number);
 

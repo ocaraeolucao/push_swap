@@ -41,20 +41,7 @@ static	void printoperations(t_bench bench)
     ft_putstr_fd("\n", 2);
 }
 
-void	printbench(t_bench bench)
-{
-	if (bench.active != 1)
-		return ;
-	ft_putstr_fd("[bench] disorder:	", 2);
-	ft_putfloat_fd(bench.disorder, 2);
-	ft_putstr_fd("%\n[bench] strategy:	", 2);
-	ft_putstr_fd(bench.strategy_name, 2);
-	ft_putstr_fd(" / ", 2);
-	ft_putstr_fd(bench.complexity, 2);
-	printoperations(bench);
-}
-
-char    *set_strategy_name(t_strategy strategy)
+static char    *set_strategy_name(t_strategy strategy)
 {
     if (strategy == SIMPLE)
         return ("Selection sort adaptation");
@@ -66,7 +53,7 @@ char    *set_strategy_name(t_strategy strategy)
         return ("Adaptive");
 }
 
-char    *set_complexity(t_strategy strategy)
+static char    *set_complexity(t_strategy strategy)
 {
     if (strategy == SIMPLE)
         return ("O(n^2)");
@@ -76,6 +63,19 @@ char    *set_complexity(t_strategy strategy)
         return ("O(n log n)");
     else
         return ("O(1)");
+}
+
+void	printbench(t_bench bench)
+{
+	if (bench.active != 1)
+		return ;
+	ft_putstr_fd("[bench] disorder:	", 2);
+	ft_putfloat_fd(bench.disorder, 2);
+	ft_putstr_fd("%\n[bench] strategy:	", 2);
+	ft_putstr_fd(bench.strategy_name, 2);
+	ft_putstr_fd(" / ", 2);
+	ft_putstr_fd(bench.complexity, 2);
+	printoperations(bench);
 }
 
 int set_options(t_bench *bench, t_strategy *strategy, int *argc, char ***argv)
@@ -100,5 +100,7 @@ int set_options(t_bench *bench, t_strategy *strategy, int *argc, char ***argv)
         (*argv)++;
         (*argc)--;
     }
+    (*bench).strategy_name = set_strategy_name(*strategy);
+    (*bench).complexity = set_complexity(*strategy);
     return (1);
 }

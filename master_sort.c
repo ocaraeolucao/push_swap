@@ -81,6 +81,11 @@ void	sort_3(t_stack **stack, t_bench *bench)
 	first_node = *stack;
 	second_node = first_node->next;
 	third_node = second_node->next;
+    if (third_node == NULL)
+    {
+        sort_2(stack, bench);
+        return ;
+    }
     if (first_node->index < second_node->index && second_node->index < third_node->index)
         return ;
 	else if (first_node->index < second_node->index)
