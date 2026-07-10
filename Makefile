@@ -8,7 +8,6 @@ SRCS =	chunking_sort.c \
 		main.c \
 		master_sort.c \
 		options.c \
-		printstack.c \
 		push.c \
 		radix_sort.c \
 		reverse_rotate.c \

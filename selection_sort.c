@@ -51,6 +51,7 @@ void	selection_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	int		node_position;
 	int		size;
 
+	bench->complexity = "O(n^2)";
 	size = stacksize(*stack_a);
 	while (size > 3)
 	{

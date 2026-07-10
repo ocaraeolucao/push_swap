@@ -72,7 +72,7 @@ Custom implementations of standard C library functions, mirroring the behavior d
 A set of utility functions that are not included in the standard libc but are highly useful for string manipulation and file descriptor operations.
 * **String Operations:** `ft_substr`, `ft_strjoin`, `ft_strtrim`, `ft_split`, `ft_strmapi`, `ft_striteri`
 * **Number to String:** `ft_itoa`
-* **File Descriptor Output:** `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putnbr_fd`
+* **File Descriptor Output:** `ft_putchar_fd`, `ft_putstr_fd`, `ft_putendl_fd`, `ft_putfloat_fd`, `ft_putnbr_fd`
 
 ### 3. Linked Lists
 Functions designed to create, traverse, and manipulate singly linked lists, utilizing a custom `t_list` structure defined in the header file.

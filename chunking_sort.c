@@ -81,6 +81,7 @@ void	chunking_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	int     size_a;
  
     size_a = stacksize(*stack_a);
+    bench->complexity = "O(n√n)";
     chunk_stack(stack_a, stack_b, bench, size_a);
     while (*stack_b != NULL)
     {

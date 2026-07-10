@@ -108,6 +108,7 @@ void    master_sort(t_stack **stack_a, t_stack **stack_b, t_strategy strategy, t
         return ;
     }
     disorder = compute_disorder(*stack_a);
+    bench->disorder = disorder * 100.0;
     if (disorder == 0.0)
         return ;
     else if (strategy == SIMPLE || (disorder < 0.2 && strategy == ADAPTIVE))

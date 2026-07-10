@@ -33,6 +33,7 @@ void    radix_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
     int j;
 
     size = stacksize(*stack_a);
+    bench->complexity = "O(n log n)";
     max_bits = get_max_bits(size - 1);
     i = 0;
     while (i < max_bits)

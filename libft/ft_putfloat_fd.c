@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printstack.c                                       :+:      :+:    :+:   */
+/*   ft_putfloat_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/06 20:34:23 by marvin            #+#    #+#             */
-/*   Updated: 2026/07/06 20:34:23 by marvin           ###   ########.fr       */
+/*   Created: 2026/07/10 15:09:18 by marvin            #+#    #+#             */
+/*   Updated: 2026/07/10 15:09:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	printstack(t_stack **stack_a, t_stack **stack_b)
+void	ft_putfloat_fd(float f, int fd)
 {
-	while (*stack_a || *stack_b)
-	{
-		if (*stack_a)
-			ft_printf("%d", (*stack_a)->number);
-		ft_printf("  ");
-		if (*stack_b)
-			ft_printf("%d", (*stack_b)->number);
-		ft_printf("\n");
-		if (*stack_a)
-			*stack_a = (*stack_a)->next;
-		if (*stack_b)
-			*stack_b = (*stack_b)->next;
-	}
+	int	int_part;
+	int	frac_part;
+
+	int_part = (int)f;
+	frac_part = (int)(((f - (float)int_part) * 100.0) + 0.5);
+	ft_putnbr_fd(int_part, fd);
+	ft_putchar_fd('.', fd);
+	if (frac_part < 10)
+		ft_putnbr_fd(0, fd);
+	ft_putnbr_fd(frac_part, fd);
 }

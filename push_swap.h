@@ -50,6 +50,9 @@ int		is_number(const char *number);
 int		stacksize(t_stack *stack);
 int		set_options(t_bench *bench, t_strategy *strategy, int *argc, char ***argv);
 
+char    *set_strategy_name(t_strategy strategy);
+char    *set_complexity(t_strategy strategy);
+
 
 t_stack	*stacklast(t_stack *stack);
 t_stack	*stacknew(int number);
@@ -57,12 +60,12 @@ t_stack	*stacknew(int number);
 void	stackadd_front(t_stack **stack, t_stack *new);
 void	stackadd_back(t_stack **stack, t_stack *new);
 
-void	printstack(t_stack **stack_a, t_stack **stack_b);
 void    master_sort(t_stack **stack_a, t_stack **stack_b, t_strategy strategy, t_bench *bench);
 void	selection_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 void	chunking_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 void	radix_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 void	sort_3(t_stack **stack, t_bench *bench);
+void	printbench(t_bench bench);
 
 void    push_a(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
 void    push_b(t_stack **stack_a, t_stack **stack_b, t_bench *bench);
