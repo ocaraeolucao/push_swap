@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_duplicated(t_stack *stack, int number)
+static int	is_duplicated(t_stack *stack, int number)
 {
 	if (!stack)
 		return (0);
@@ -25,7 +25,7 @@ int	is_duplicated(t_stack *stack, int number)
 	return (0);
 }
 
-int	is_number(const char *number)
+static int	is_number(const char *number)
 {
 	int	i;
 
@@ -41,4 +41,19 @@ int	is_number(const char *number)
 		i++;
 	}
 	return (1);
+}
+
+t_stack	*newnode(char *split, t_stack *stack)
+{
+	long	atol;
+	t_stack	*new;
+
+	if (!is_number(split))
+		return (NULL);
+	atol = ft_atol(split);
+	if (atol > 2147483647 || atol < -2147483648 || is_duplicated(stack,
+			(int)atol))
+		return (NULL);
+	new = stacknew((int)atol);
+	return (new);
 }

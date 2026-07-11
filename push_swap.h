@@ -52,12 +52,11 @@ typedef struct s_stack
 }	t_stack;
 
 int		main(int argc, char **argv);
-int		is_duplicated(t_stack *stack, int number);
-int		is_number(const char *number);
 int		stacksize(t_stack *stack);
 int		set_options(t_bench *bench, t_strategy *strategy, int *argc,
 			char ***argv);
 
+t_stack	*newnode(char *split, t_stack *stack);
 t_stack	*stacklast(t_stack *stack);
 t_stack	*stacknew(int number);
 

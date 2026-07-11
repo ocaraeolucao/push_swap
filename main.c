@@ -30,6 +30,8 @@ static void	free_split(char **split)
 {
 	int		i;
 
+	if (!split)
+		return ;
 	i = 0;
 	while (split[i])
 	{
@@ -47,27 +49,24 @@ static t_stack	*printerror(t_stack **stack, char **split)
 	return (NULL);
 }
 
-static t_stack	*set_stack(char **argv)
+static t_stack	*set_stack(char **argv, t_stack *stack)
 {
-	t_stack	*stack;
+	t_stack	*new;
 	char	**split;
 	int		i;
-	long	atol;
 
-	stack = NULL;
 	while (*argv)
 	{
 		i = 0;
 		split = ft_split(*argv, ' ');
+		if (!split)
+			return (printerror(&stack, split));
 		while (split[i])
 		{
-			if (!is_number(split[i]))
+			new = newnode(split[i], stack);
+			if (!new)
 				return (printerror(&stack, split));
-			atol = ft_atol(split[i]);
-			if (atol > 2147483647 || atol < -2147483648 || is_duplicated(stack,
-					(int)atol))
-				return (printerror(&stack, split));
-			stackadd_back(&stack, stacknew((int)atol));
+			stackadd_back(&stack, new);
 			i++;
 		}
 		free_split(split);
@@ -90,7 +89,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (0);
 	argv++;
-	stack_a = set_stack(argv);
+	stack_a = set_stack(argv, NULL);
 	if (!stack_a)
 		return (1);
 	stack_b = NULL;
