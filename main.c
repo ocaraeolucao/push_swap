@@ -6,7 +6,7 @@
 /*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/25 18:21:53 by luvieira          #+#    #+#             */
-/*   Updated: 2026/07/08 20:45:07 by luvieira         ###   ########.fr       */
+/*   Updated: 2026/07/11 20:50:52 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static t_stack	*set_stack(char **argv, t_stack *stack)
 			return (printerror(&stack, split));
 		while (split[i])
 		{
-			new = newnode(split[i], stack);
+			new = new_node(split[i], stack);
 			if (!new)
 				return (printerror(&stack, split));
 			stackadd_back(&stack, new);

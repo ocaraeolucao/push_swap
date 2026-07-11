@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   new_node.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/07/07 02:48:57 by marvin            #+#    #+#             */
-/*   Updated: 2026/07/08 20:43:20 by luvieira         ###   ########.fr       */
+/*   Updated: 2026/07/11 20:50:45 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	is_number(const char *number)
 	return (1);
 }
 
-t_stack	*newnode(char *split, t_stack *stack)
+t_stack	*new_node(char *split, t_stack *stack)
 {
 	long	atol;
 	t_stack	*new;

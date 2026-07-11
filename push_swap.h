@@ -6,7 +6,7 @@
 /*   By: luvieira <luvieira@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/26 18:27:06 by luvieira          #+#    #+#             */
-/*   Updated: 2026/07/08 20:44:19 by luvieira         ###   ########.fr       */
+/*   Updated: 2026/07/11 20:50:54 by luvieira         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		stacksize(t_stack *stack);
 int		set_options(t_bench *bench, t_strategy *strategy, int *argc,
 			char ***argv);
 
-t_stack	*newnode(char *split, t_stack *stack);
+t_stack	*new_node(char *split, t_stack *stack);
 t_stack	*stacklast(t_stack *stack);
 t_stack	*stacknew(int number);
 

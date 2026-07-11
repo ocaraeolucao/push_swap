@@ -7,6 +7,7 @@ NAME = push_swap
 SRCS =	chunking_sort.c \
 		main.c \
 		master_sort.c \
+		new_node.c \
 		options.c \
 		push.c \
 		radix_sort.c \
@@ -14,8 +15,7 @@ SRCS =	chunking_sort.c \
 		rotate.c \
 		selection_sort.c \
 		swap.c \
-		t_stack.c \
-		validate.c
+		t_stack.c
 OBJ = $(SRCS:.c=.o)
 
 LIBFT_DIR = ./libft
