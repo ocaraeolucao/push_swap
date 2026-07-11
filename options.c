@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static	void printoperations(t_bench bench)
+static	void	printoperations(t_bench bench)
 {
 	ft_putstr_fd("\n[bench] total_ops:	", 2);
 	ft_putnbr_fd(bench.total_ops, 2);
@@ -38,31 +38,31 @@ static	void printoperations(t_bench bench)
 	ft_putnbr_fd(bench.rrb, 2);
 	ft_putstr_fd("	rrr:	", 2);
 	ft_putnbr_fd(bench.rrr, 2);
-    ft_putstr_fd("\n", 2);
+	ft_putstr_fd("\n", 2);
 }
 
-static char    *set_strategy_name(t_strategy strategy)
+static char	*set_strategy_name(t_strategy strategy)
 {
-    if (strategy == SIMPLE)
-        return ("Selection sort adaptation");
-    else if (strategy == MEDIUM)
-        return ("Chunk-based sortin");
-    else if (strategy == COMPLEX)
-        return ("Radix sort adaptation");
-    else
-        return ("Adaptive");
+	if (strategy == SIMPLE)
+		return ("Selection sort adaptation");
+	else if (strategy == MEDIUM)
+		return ("Chunk-based sortin");
+	else if (strategy == COMPLEX)
+		return ("Radix sort adaptation");
+	else
+		return ("Adaptive");
 }
 
-static char    *set_complexity(t_strategy strategy)
+static char	*set_complexity(t_strategy strategy)
 {
-    if (strategy == SIMPLE)
-        return ("O(n^2)");
-    else if (strategy == MEDIUM)
-        return ("O(n√n)");
-    else if (strategy == COMPLEX)
-        return ("O(n log n)");
-    else
-        return ("O(1)");
+	if (strategy == SIMPLE)
+		return ("O(n^2)");
+	else if (strategy == MEDIUM)
+		return ("O(n√n)");
+	else if (strategy == COMPLEX)
+		return ("O(n log n)");
+	else
+		return ("O(1)");
 }
 
 void	printbench(t_bench bench)
@@ -78,29 +78,29 @@ void	printbench(t_bench bench)
 	printoperations(bench);
 }
 
-int set_options(t_bench *bench, t_strategy *strategy, int *argc, char ***argv)
+int	set_options(t_bench *bench, t_strategy *strategy, int *argc, char ***argv)
 {
-    while (*argc > 1 && ft_strncmp((*argv)[1], "--", 2) == 0)
-    {
-        if (ft_strncmp((*argv)[1], "--bench", 8) == 0)
-            (*bench).active = 1;
-        else if (ft_strncmp((*argv)[1], "--simple", 9) == 0)
-            *strategy = SIMPLE;
-        else if (ft_strncmp((*argv)[1], "--medium", 9) == 0)
-            *strategy = MEDIUM;
-        else if (ft_strncmp((*argv)[1], "--complex", 10) == 0)
-            *strategy = COMPLEX;
-        else if (ft_strncmp((*argv)[1], "--adaptive", 11) == 0)
-            *strategy = ADAPTIVE;
-        else
-        {
-            ft_putstr_fd("Error\n", 2);
-            return (0);
-        }
-        (*argv)++;
-        (*argc)--;
-    }
-    (*bench).strategy_name = set_strategy_name(*strategy);
-    (*bench).complexity = set_complexity(*strategy);
-    return (1);
+	while (*argc > 1 && ft_strncmp((*argv)[1], "--", 2) == 0)
+	{
+		if (ft_strncmp((*argv)[1], "--bench", 8) == 0)
+			(*bench).active = 1;
+		else if (ft_strncmp((*argv)[1], "--simple", 9) == 0)
+			*strategy = SIMPLE;
+		else if (ft_strncmp((*argv)[1], "--medium", 9) == 0)
+			*strategy = MEDIUM;
+		else if (ft_strncmp((*argv)[1], "--complex", 10) == 0)
+			*strategy = COMPLEX;
+		else if (ft_strncmp((*argv)[1], "--adaptive", 11) == 0)
+			*strategy = ADAPTIVE;
+		else
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (0);
+		}
+		(*argv)++;
+		(*argc)--;
+	}
+	(*bench).strategy_name = set_strategy_name(*strategy);
+	(*bench).complexity = set_complexity(*strategy);
+	return (1);
 }

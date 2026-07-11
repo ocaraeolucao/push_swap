@@ -29,69 +29,71 @@ static int	get_node_position(t_stack *stack, int max_index)
 	return (i);
 }
 
-static void chunk_stack(t_stack **stack_a, t_stack **stack_b, t_bench *bench, int size_a)
+static void	chunk_stack(t_stack **stack_a, t_stack **stack_b, t_bench *bench,
+	int size_a)
 {
-    int chunk;
-    int limit;
-    int count;
+	int	chunk;
+	int	limit;
+	int	count;
 
-    chunk = ft_sqrt(size_a);
-    limit = chunk;
-    count = 0;
-    while (*stack_a != NULL)
-    {
-        if ((*stack_a)->index < limit)
-        {
-            push_b(stack_a, stack_b, bench);
-            count++;
-            size_a--;
-            if (count == limit)
-                limit += chunk;
-        }
-        else
-            rotate_a(stack_a, bench);
-    }
+	chunk = ft_sqrt(size_a);
+	limit = chunk;
+	count = 0;
+	while (*stack_a != NULL)
+	{
+		if ((*stack_a)->index < limit)
+		{
+			push_b(stack_a, stack_b, bench);
+			count++;
+			size_a--;
+			if (count == limit)
+				limit += chunk;
+		}
+		else
+			rotate_a(stack_a, bench);
+	}
 }
 
-static void get_max_top(t_stack **stack_a, t_stack **stack_b, t_bench *bench, int index)
+static void	get_max_top(t_stack **stack_a, t_stack **stack_b, t_bench *bench,
+	int index)
 {
-    int node_position;
-    int size_b;
+	int	node_position;
+	int	size_b;
 
-    node_position = get_node_position(*stack_b, index);
-    size_b = stacksize(*stack_b);
-    while ((*stack_b)->index != index)
-    {
-        if ((*stack_b)->index == index - 1)
-        {
-            push_a(stack_a, stack_b, bench);
-            node_position = get_node_position(*stack_b, index);
-            size_b--;
-            continue ;
-        }
-        if (node_position <= size_b / 2)
-            rotate_b(stack_b, bench);
-        else
-            reverse_rotate_b(stack_b, bench);
-    }
+	node_position = get_node_position(*stack_b, index);
+	size_b = stacksize(*stack_b);
+	while ((*stack_b)->index != index)
+	{
+		if ((*stack_b)->index == index - 1)
+		{
+			push_a(stack_a, stack_b, bench);
+			node_position = get_node_position(*stack_b, index);
+			size_b--;
+			continue ;
+		}
+		if (node_position <= size_b / 2)
+			rotate_b(stack_b, bench);
+		else
+			reverse_rotate_b(stack_b, bench);
+	}
 }
 
 void	chunking_sort(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
-	int     size_a;
- 
-    size_a = stacksize(*stack_a);
-    bench->complexity = "O(n√n)";
-    chunk_stack(stack_a, stack_b, bench, size_a);
-    while (*stack_b != NULL)
-    {
-        get_max_top(stack_a, stack_b, bench, size_a - 1);
-        push_a(stack_a, stack_b, bench);
-        if ((*stack_a)->next && (*stack_a)->index > (*stack_a)->next->index)
-        {
-            swap_a(stack_a, bench);
-            size_a--;
-        }
-        size_a--;
-    }
+	int	size_a;
+
+	size_a = stacksize(*stack_a);
+	bench->complexity = "O(n√n)";
+	chunk_stack(stack_a, stack_b, bench, size_a);
+	while (*stack_b != NULL)
+	{
+		get_max_top(stack_a, stack_b, bench, size_a - 1);
+		push_a(stack_a, stack_b, bench);
+		if ((*stack_a)->next && (*stack_a)->index > (*stack_a)->next->index)
+		{
+			swap_a(stack_a, bench);
+			size_a--;
+		}
+		size_a--;
+	}
 }

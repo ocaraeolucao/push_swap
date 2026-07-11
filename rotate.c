@@ -12,51 +12,51 @@
 
 #include "push_swap.h"
 
-static void    void_rotate(t_stack **stack)
+static void	void_rotate(t_stack **stack)
 {
-    t_stack *first_stack;
-    t_stack *second_stack;
+	t_stack	*first_stack;
+	t_stack	*second_stack;
 
-    if (!*stack || !(*stack)->next)
-        return ;
-    first_stack = *stack;
-    second_stack = (*stack)->next;
-    second_stack->prev = NULL;
-    *stack = second_stack;
-    first_stack->next = NULL;
-    stackadd_back(stack, first_stack);
+	if (!*stack || !(*stack)->next)
+		return ;
+	first_stack = *stack;
+	second_stack = (*stack)->next;
+	second_stack->prev = NULL;
+	*stack = second_stack;
+	first_stack->next = NULL;
+	stackadd_back(stack, first_stack);
 }
 
-void    rotate_a(t_stack **stack_a, t_bench *bench)
+void	rotate_a(t_stack **stack_a, t_bench *bench)
 {
-    void_rotate(stack_a);
-    ft_putstr_fd("ra\n", 1);
-    if (bench && bench->active)
-    {
-        bench->ra++;
-        bench->total_ops++;
-    }
+	void_rotate(stack_a);
+	ft_putstr_fd("ra\n", 1);
+	if (bench && bench->active)
+	{
+		bench->ra++;
+		bench->total_ops++;
+	}
 }
 
-void    rotate_b(t_stack **stack_b, t_bench *bench)
+void	rotate_b(t_stack **stack_b, t_bench *bench)
 {
-    void_rotate(stack_b);
-    ft_putstr_fd("rb\n", 1);
-    if (bench && bench->active)
-    {
-        bench->rb++;
-        bench->total_ops++;
-    }
+	void_rotate(stack_b);
+	ft_putstr_fd("rb\n", 1);
+	if (bench && bench->active)
+	{
+		bench->rb++;
+		bench->total_ops++;
+	}
 }
 
-void    rotate_r(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
+void	rotate_r(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
-    void_rotate(stack_a);
-    void_rotate(stack_b);
-    ft_putstr_fd("rr\n", 1);
-    if (bench && bench->active)
-    {
-        bench->rr++;
-        bench->total_ops += 2;
-    }
+	void_rotate(stack_a);
+	void_rotate(stack_b);
+	ft_putstr_fd("rr\n", 1);
+	if (bench && bench->active)
+	{
+		bench->rr++;
+		bench->total_ops += 2;
+	}
 }

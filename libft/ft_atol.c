@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: luvieira <luvieira@student.42.fr>              +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/03 03:07:59 by luvieira            #+#    #+#             */
-/*   Updated: 2026/07/03 03:07:59 by luvieira           ###   ########.fr       */
+/*   Created: 2026/07/10 20:34:28 by marvin            #+#    #+#             */
+/*   Updated: 2026/07/10 20:34:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	space(char c)
 
 long	ft_atol(const char *nptr)
 {
-	int	    i;
-	int	    sign;
+	int		i;
+	int		sign;
 	long	result;
 
 	i = 0;

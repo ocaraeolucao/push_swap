@@ -49,31 +49,31 @@ static t_stack	*printerror(t_stack **stack, char **split)
 
 static t_stack	*set_stack(char **argv)
 {
-	t_stack *stack;
-    char    **split;
-    int     i;
-    long    atol;
+	t_stack	*stack;
+	char	**split;
+	int		i;
+	long	atol;
 
-    stack = NULL;
-	argv++;
-    while (*argv)
-    {
-        i = 0;
-        split = ft_split(*argv, ' ');
-        while (split[i])
-        {
-            if (!is_number(split[i]))
-                return printerror(&stack, split);
-            atol = ft_atol(split[i]);
-            if (atol > 2147483647 || atol < -2147483648 || is_duplicated(stack, (int)atol))
-                return printerror(&stack, split);
-            stackadd_back(&stack, stacknew((int)atol));
-            i++;
-        }
-        free_split(split);
-        argv++;
-    }
-    return (stack);
+	stack = NULL;
+	while (*argv)
+	{
+		i = 0;
+		split = ft_split(*argv, ' ');
+		while (split[i])
+		{
+			if (!is_number(split[i]))
+				return (printerror(&stack, split));
+			atol = ft_atol(split[i]);
+			if (atol > 2147483647 || atol < -2147483648 || is_duplicated(stack,
+					(int)atol))
+				return (printerror(&stack, split));
+			stackadd_back(&stack, stacknew((int)atol));
+			i++;
+		}
+		free_split(split);
+		argv++;
+	}
+	return (stack);
 }
 
 int	main(int argc, char **argv)
@@ -81,16 +81,21 @@ int	main(int argc, char **argv)
 	t_stack		*stack_a;
 	t_stack		*stack_b;
 	t_strategy	strategy;
-	t_bench     bench;
+	t_bench		bench;
 
 	ft_bzero(&bench, sizeof(t_bench));
 	strategy = ADAPTIVE;
-	if (!set_options(&bench, &strategy, &argc, &argv) || argc < 2)
+	if (!set_options(&bench, &strategy, &argc, &argv))
+		return (1);
+	if (argc < 2)
 		return (0);
+	argv++;
 	stack_a = set_stack(argv);
+	if (!stack_a)
+		return (1);
 	stack_b = NULL;
 	master_sort(&stack_a, &stack_b, strategy, &bench);
 	printbench(bench);
-    stackclear(&stack_a);
-    return (0);
+	stackclear(&stack_a);
+	return (0);
 }
