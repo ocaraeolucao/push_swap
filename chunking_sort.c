@@ -45,7 +45,6 @@ static void	chunk_stack(t_stack **stack_a, t_stack **stack_b, t_bench *bench,
 		{
 			push_b(stack_a, stack_b, bench);
 			count++;
-			size_a--;
 			if (count == limit)
 				limit += chunk;
 		}
