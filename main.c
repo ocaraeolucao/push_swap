@@ -49,12 +49,15 @@ static t_stack	*printerror(t_stack **stack, char **split)
 	return (NULL);
 }
 
-static t_stack	*set_stack(char **argv, t_stack *stack)
+static t_stack	*set_stack(char **argv)
 {
 	t_stack	*new;
+	t_stack	*stack;
 	char	**split;
 	int		i;
 
+	stack = NULL;
+	argv++;
 	while (*argv)
 	{
 		i = 0;
@@ -88,8 +91,7 @@ int	main(int argc, char **argv)
 		return (1);
 	if (argc < 2)
 		return (0);
-	argv++;
-	stack_a = set_stack(argv, NULL);
+	stack_a = set_stack(argv);
 	if (!stack_a)
 		return (1);
 	stack_b = NULL;
