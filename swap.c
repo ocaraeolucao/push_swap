@@ -62,6 +62,6 @@ void	swap_s(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	if (bench && bench->active)
 	{
 		bench->ss++;
-		bench->total_ops += 2;
+		bench->total_ops++;
 	}
 }

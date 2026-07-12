@@ -57,6 +57,6 @@ void	rotate_r(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 	if (bench && bench->active)
 	{
 		bench->rr++;
-		bench->total_ops += 2;
+		bench->total_ops++;
 	}
 }
